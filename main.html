@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasnia Ahmed</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Tailwind Config -->
+    <style>
+        :root {
+            --bg-dark: #030712; /* Deep, dark navy */
+            --bg-light: #111827; /* Slightly lighter navy for cards */
+            --border-color: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --accent-indigo: #6366f1;
+            --accent-cyan: #22d3ee;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.75;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.025em; /* Tighter letter spacing for headings */
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .navbar-scrolled {
+            background: rgba(3, 7, 18, 0.85);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+        /* Mouse Glow Effect Styles */
+        #glow-effect {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-indigo) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0.1;
+            filter: blur(100px);
+            transition: transform 0.2s ease-out;
+        }
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+        .skill-card-glossy {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Div for the mouse glow effect -->
+    <div id="glow-effect"></div>
+
+    <!-- =========== Header & Navbar =========== -->
+    <header class="sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold text-white truncate">Tasnia Ahmed</a>
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#about" class="text-gray-400 hover:text-white font-medium transition duration-300">About</a></li>
+                <li><a href="#skills" class="text-gray-400 hover:text-white font-medium transition duration-300">Skills</a></li>
+                <li><a href="#education" class="text-gray-400 hover:text-white font-medium transition duration-300">Education</a></li>
+                <li><a href="#projects" class="text-gray-400 hover:text-white font-medium transition duration-300">Projects</a></li>
+                <li><a href="#contact" class="text-gray-400 hover:text-white font-medium transition duration-300">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden glass-effect mx-4 rounded-lg">
+            <a href="#about" class="block py-3 px-4 text-gray-300 hover:bg-gray-700/50 rounded-t-lg">About</a>
+            <a href="#skills" class="block py-3 px-4 text-gray-300 hover:bg-gray-700/50">Skills</a>
+            <a href="#education" class="block py-3 px-4 text-gray-300 hover:bg-gray-700/50">Education</a>
+            <a href="#projects" class="block py-3 px-4 text-gray-300 hover:bg-gray-700/50">Projects</a>
+            <a href="#contact" class="block py-3 px-4 text-gray-300 hover:bg-gray-700/50 rounded-b-lg">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section =========== -->
+        <section id="home" class="relative overflow-hidden">
+            <div class="container relative mx-auto px-6 py-28 md:py-48 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+                <div class="md:w-3/5 text-center md:text-left">
+                    <p class="text-lg text-indigo-400 font-semibold mb-3 scroll-reveal">Full Stack Developer</p>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-5 scroll-reveal" style="transition-delay: 100ms;">Tasnia Ahmed</h1>
+                    <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto md:mx-0 scroll-reveal" style="transition-delay: 200ms;">I build efficient, scalable, and visually appealing web applications with a passion for emerging technologies.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start scroll-reveal" style="transition-delay: 300ms;">
+                        <a href="#" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transform hover:-translate-y-1 transition-all duration-300">Download Resume</a>
+                    </div>
+                     <!-- Social Links -->
+                    <div class="mt-12 flex justify-center md:justify-start space-x-6 scroll-reveal" style="transition-delay: 400ms;">
+                        <a href="https://github.com/AhmedTasnia" target="_blank" class="text-gray-400 hover:text-white transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg></a>
+                        <a href="https://www.linkedin.com/in/tasnia-ahmed29/" target="_blank" class="text-gray-400 hover:text-white transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg></a>
+                        <a href="mailto:a.tasnia03@gmail.com" class="text-gray-400 hover:text-white transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg></a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 flex justify-center md:justify-end mt-10 md:mt-0">
+                    <div class="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 relative scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="absolute inset-0 bg-indigo-500/20 rounded-full blur-3xl"></div>
+                        <img src="https://placehold.co/400x400/030712/f9fafb?text=Tasnia" alt="Tasnia Ahmed" class="relative w-full h-full object-cover rounded-full border-4 border-gray-800 shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== About Me Section =========== -->
+        <section id="about" class="bg-gray-900/50">
+            <div class="container mx-auto px-6 py-24 md:py-32 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">About Me</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4"></div>
+                </div>
+                <div class="max-w-4xl mx-auto text-center text-gray-400 space-y-6 text-lg">
+                    <p>I'm a passionate web developer with a love for crafting efficient, scalable, and visually appealing applications. My journey in technology began with curiosity about how digital systems work, which evolved into a deep passion for web development.</p>
+                    <p>As a Computer Science student, I'm constantly learning and exploring emerging technologies, especially in web development and AI. I enjoy problem-solving and building meaningful digital solutions that create real impact.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good book. I'm always open to collaboration and new opportunities that help me grow professionally.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Skills Section =========== -->
+        <section id="skills">
+            <div class="container mx-auto px-6 py-24 md:py-32 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">Technical Skills</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4"></div>
+                </div>
+                <div id="skills-container" class="space-y-12">
+                    <!-- Skills will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Education Section =========== -->
+        <section id="education" class="bg-gray-900/50">
+            <div class="container mx-auto px-6 py-24 md:py-32 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">Education</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4"></div>
+                </div>
+                <div class="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg border-l-4 border-indigo-500">
+                    <h3 class="text-2xl font-bold text-white">Bachelor of Science in Computer Science & Engineering</h3>
+                    <p class="text-lg text-gray-300 mt-2">American International University-Bangladesh (AIUB)</p>
+                    <p class="text-md text-gray-500 mt-1">Expected Graduation: 2026</p>
+                    <p class="text-md text-gray-400 mt-4">Relevant Coursework: Data Structures, Algorithms, Database Systems, Web Development, Software Engineering, Artificial Intelligence</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Projects Section =========== -->
+        <section id="projects">
+            <div class="container mx-auto px-6 py-24 md:py-32 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">My Projects</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4"></div>
+                </div>
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Project cards will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Contact Section =========== -->
+        <section id="contact" class="bg-gray-900/50">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">Get In Touch</h2>
+                    <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4"></div>
+                </div>
+                <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">I'm currently open to new opportunities and collaborations. My inbox is always open, so feel free to reach out!</p>
+                <div class="space-y-6 text-lg">
+                    <p><strong>Email:</strong> <a href="mailto:a.tasnia03@gmail.com" class="text-cyan-400 hover:underline">a.tasnia03@gmail.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tasnia-ahmed29/" target="_blank" class="text-cyan-400 hover:underline">linkedin.com/in/tasnia-ahmed29</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/AhmedTasnia" target="_blank" class="text-cyan-400 hover:underline">github.com/AhmedTasnia</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="bg-gray-900/80 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Tasnia Ahmed. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =========== Project Modal =========== -->
+    <div id="project-modal" class="modal-backdrop fixed inset-0 bg-black/80 flex items-center justify-center p-4 hidden opacity-0 z-50">
+        <div id="modal-content" class="glass-effect rounded-lg shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+            <!-- Modal content will be injected here -->
+        </div>
+    </div>
+
+
+    <!-- =========== JavaScript =========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => header.classList.toggle('navbar-scrolled', window.scrollY > 50));
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible'));
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+            const glowEffect = document.getElementById('glow-effect');
+            window.addEventListener('mousemove', (e) => {
+                requestAnimationFrame(() => {
+                    glowEffect.style.left = `${e.clientX}px`;
+                    glowEffect.style.top = `${e.clientY}px`;
+                });
+            });
+
+            const skills = {
+                "Frontend": [
+                    { name: 'HTML5', badge: 'https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white' },
+                    { name: 'CSS3', badge: 'https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white' },
+                    { name: 'JavaScript', badge: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black' },
+                    { name: 'React', badge: 'https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' },
+                    { name: 'Next.js', badge: 'https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white' }
+                ],
+                "Backend": [
+                    { name: 'Node.js', badge: 'https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white' },
+                    { name: 'Express.js', badge: 'https://img.shields.io/badge/Express.js-404D59?style=for-the-badge' },
+                    { name: 'MongoDB', badge: 'https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white' },
+                    { name: 'MySQL', badge: 'https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white' },
+                    { name: 'PHP', badge: 'https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white' }
+                ],
+                "Tools & Languages": [
+                    { name: 'Git', badge: 'https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white' },
+                    { name: 'VS Code', badge: 'https://img.shields.io/badge/VS%20Code-0078d4?style=for-the-badge&logo=visual-studio-code&logoColor=white' },
+                    { name: 'C++', badge: 'https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white' },
+                    { name: 'C#', badge: 'https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white' },
+                    { name: 'Java', badge: 'https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white' }
+                ]
+            };
+            
+            const skillsContainer = document.getElementById('skills-container');
+            for (const category in skills) {
+                const categoryEl = document.createElement('div');
+                let skillsHtml = skills[category].map(skill => 
+                    `<div class="skill-card-glossy rounded-lg p-3 flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="${skill.badge}" alt="${skill.name}"/>
+                    </div>`
+                ).join('');
+                categoryEl.innerHTML = 
+                    `<h3 class="text-2xl font-bold text-center mb-6 text-cyan-400">${category}</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        ${skillsHtml}
+                    </div>`;
+                skillsContainer.appendChild(categoryEl);
+            }
+
+            const projects = [
+                { 
+                    id: 1, 
+                    name: "E-Commerce Platform", 
+                    image: "https://placehold.co/600x400/0891b2/ffffff?text=E-Commerce", 
+                    techStack: "React, Node.js, MongoDB, Stripe API", 
+                    description: "A full-featured e-commerce platform with product listings, cart functionality, and secure payment processing.", 
+                    challenges: "Implementing real-time inventory updates and ensuring secure payment processing.", 
+                    improvements: "Adding recommendation engine and wishlist functionality.", 
+                    liveLink: "#", 
+                    githubLink: "https://github.com/AhmedTasnia/e-commerce-platform" 
+                },
+                { 
+                    id: 2, 
+                    name: "Task Management App", 
+                    image: "https://placehold.co/600x400/059669/ffffff?text=Task+App", 
+                    techStack: "Next.js, Firebase, Tailwind CSS", 
+                    description: "A collaborative task management application with real-time updates and team collaboration features.", 
+                    challenges: "Managing real-time synchronization across multiple users.", 
+                    improvements: "Adding calendar integration and advanced filtering.", 
+                    liveLink: "#", 
+                    githubLink: "https://github.com/AhmedTasnia/task-management-app" 
+                },
+                { 
+                    id: 3, 
+                    name: "AI Chat Interface", 
+                    image: "https://placehold.co/600x400/7c3aed/ffffff?text=AI+Chat", 
+                    techStack: "React, Python, Flask, OpenAI API", 
+                    description: "An intelligent chat interface that uses AI to provide contextual responses to user queries.", 
+                    challenges: "Optimizing response times and managing API rate limits.", 
+                    improvements: "Adding conversation history and multi-language support.", 
+                    liveLink: "#", 
+                    githubLink: "https://github.com/AhmedTasnia/ai-chat-interface" 
+                },
+                { 
+                    id: 4, 
+                    name: "Portfolio CMS", 
+                    image: "https://placehold.co/600x400/be185d/ffffff?text=Portfolio+CMS", 
+                    techStack: "PHP, MySQL, JavaScript", 
+                    description: "A content management system specifically designed for creative portfolios with drag-and-drop editing.", 
+                    challenges: "Creating an intuitive drag-and-drop interface with persistent state.", 
+                    improvements: "Adding template system and export functionality.", 
+                    liveLink: "#", 
+                    githubLink: "https://github.com/AhmedTasnia/portfolio-cms" 
+                }
+            ];
+
+            const projectsGrid = document.getElementById('projects-grid');
+            const modal = document.getElementById('project-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-900 rounded-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group border border-transparent hover:border-indigo-500';
+                card.innerHTML = 
+                    `<div class="overflow-hidden"><img src="${project.image}" alt="${project.name}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">${project.name}</h3>
+                        <p class="text-cyan-400 mb-4 text-sm font-mono">${project.techStack}</p>
+                        <button data-project-id="${project.id}" class="view-details-btn w-full bg-gray-800 text-cyan-400 font-semibold py-2 px-4 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/20 hover:text-white transition duration-300">View Details</button>
+                    </div>`;
+                projectsGrid.appendChild(card);
+            });
+
+            function openModal(project) {
+                modalContent.innerHTML = 
+                    `<div class="p-6 md:p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h2 class="text-3xl font-bold text-white">${project.name}</h2>
+                            <button id="close-modal-btn" class="text-gray-500 hover:text-white text-4xl leading-none">&times;</button>
+                        </div>
+                        <img src="${project.image}" alt="${project.name}" class="w-full h-64 object-cover rounded-lg mb-6 shadow-md">
+                        <div class="space-y-6 text-gray-400">
+                            <div><h4 class="font-bold text-lg mb-2 text-white">Description</h4><p>${project.description}</p></div>
+                            <div><h4 class="font-bold text-lg mb-2 text-white">Technology Stack</h4><p class="font-mono text-cyan-400">${project.techStack}</p></div>
+                            <div><h4 class="font-bold text-lg mb-2 text-white">Challenges</h4><p>${project.challenges}</p></div>
+                            <div><h4 class="font-bold text-lg mb-2 text-white">Future Improvements</h4><p>${project.improvements}</p></div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-gray-700 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="${project.liveLink}" target="_blank" class="flex-1 text-center bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-300">Live Project</a>
+                            <a href="${project.githubLink}" target="_blank" class="flex-1 text-center bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition duration-300">GitHub Repo</a>
+                        </div>
+                    </div>`;
+                modal.classList.remove('hidden');
+                setTimeout(() => { modal.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); }, 10);
+                document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+            }
+
+            function closeModal() {
+                modal.classList.add('opacity-0');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const project = projects.find(p => p.id === parseInt(button.dataset.projectId));
+                    openModal(project);
+                });
+            });
+
+            modal.addEventListener('click', e => e.target === modal && closeModal());
+            document.addEventListener('keydown', e => e.key === 'Escape' && !modal.classList.contains('hidden') && closeModal());
+        });
+    </script>
+
+</body>
+</html>
